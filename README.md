@@ -4,8 +4,8 @@ This is a simple application for sorting files to appropriate folders according 
 ## Build app
 1. Build app with gradle: \
 `gradle clean build` 
-2. Build app is located in following location: \
-`optional invocation with path not supported yet. Application will work in current path folders` 
+2. Built app is located in the following location: \
+`build/libs/FilesSort-0.1.jar` 
 3. run app `java -jar` - *optional invocation with path as a parameter not supported yet. Application will work in current path folders.*
 
 ## How it works?
