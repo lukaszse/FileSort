@@ -38,7 +38,8 @@ public class FilesSortCommand implements Runnable {
         FilesSorter filesSorter = new FilesSorter(path);
         filesSorter.createFolders();
         filesSorter.sortFiles();
-        fileWriter.writeReport(filesSorter.getMovedFilesCounter(), FilesSorter.HOME_FOLDER);
+        fileWriter.writeSingleReport(filesSorter.getMovedFilesCounter(), FilesSorter.HOME_FOLDER);
+        fileWriter.writeSummaryReport(FilesSorter.HOME_FOLDER);
         log.info("Sorting completed.");
     }
 }

@@ -5,10 +5,10 @@ This is a simple application for sorting files to appropriate folders according 
 1. Build app with gradle: \
 `gradle clean build` 
 2. The built app is located in the following location: \
-`build/libs/FilesSort-0.1.jar` 
-3. run app `java -jar FilesSort-0.1.jar`
+`build/libs/FilesSort-0.1-all.jar` 
+3. run app `java -jar FilesSort-0.1-all.jar`
 app can e invoked optionally with paameter `path`, example: \
-   `java -jar FilesSort-0.1.jar -p {your chosen path}`
+   `java -jar FilesSort-0.1-all.jar -p {your chosen path}`
 
 ## How it works?
 Each time app is launch, it copies all files from ./home to ./dev or ./test

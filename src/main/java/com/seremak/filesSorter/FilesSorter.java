@@ -80,19 +80,19 @@ public class FilesSorter {
         }
     }
 
-    Path prepareNewPath(final String path, final String filePath) {
+    private static final Path prepareNewPath(final String path, final String filePath) {
         String fileName = Paths.get(filePath).getFileName().toString();
         return Paths.get(path, fileName);
     }
 
-    void writeSortedFilesQty(String key) {
+    private void writeSortedFilesQty(String key) {
         Integer counter = movedFilesCounter.get(key);
         Integer counterTotal = movedFilesCounter.get(TOTAL_QTY);
         movedFilesCounter.replace(key, ++counter);
         movedFilesCounter.replace(TOTAL_QTY, ++counterTotal);
     }
 
-    Map<String, Integer> prepareFileCounter() {
+    public static Map<String, Integer> prepareFileCounter() {
         Map<String, Integer> fileCounter = new HashMap<>();
         fileCounter.put(DEV_FOLDER, 0);
         fileCounter.put(TEST_FOLDER, 0);
