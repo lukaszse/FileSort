@@ -19,6 +19,7 @@ micronaut {
 }
 
 dependencies {
+    annotationProcessor("org.projectlombok:lombok:1.18.12")
     annotationProcessor("info.picocli:picocli-codegen")
     implementation("info.picocli:picocli")
     implementation("io.micronaut:micronaut-runtime")

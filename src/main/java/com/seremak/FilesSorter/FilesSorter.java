@@ -9,15 +9,18 @@ import java.util.stream.Collectors;
 
 public class FilesSorter {
 
+
     public static final String DEV = "dev";
     public static final String HOME = "home";
     public static final String TEST = "test";
 
+    Path mainPath;
     Path devPath;
     Path homePath;
     Path testPath;
 
-    public FilesSorter() {
+    public FilesSorter(final String mainStringPath) {
+        this.mainPath = Paths.get(mainStringPath);
         this.devPath = Paths.get(DEV);
         this.homePath = Paths.get(HOME);
         this.testPath = Paths.get(TEST);

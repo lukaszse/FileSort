@@ -33,6 +33,7 @@
         <option name="micronaut.processing.incremental" value="true" />
         <option name="micronaut.processing.module" value="FilesSort" />
         <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/info.picocli/picocli-codegen/4.6.1/1064dcfdfe40325c9ded2d281796b381afb0205d/picocli-codegen-4.6.1.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.micronaut/micronaut-inject-java/2.5.7/5093e5c0dea262f432ef16c6ea4b879347e019a7/micronaut-inject-java-2.5.7.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.micronaut/micronaut-validation/2.5.7/eeb4fd8c8ea3c50db1933c53ca9373da7347789/micronaut-validation-2.5.7.jar" />
