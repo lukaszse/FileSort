@@ -1,4 +1,4 @@
-package com.seremak.SortFiles;
+package com.seremak.FilesSorter;
 
 import java.io.*;
 import java.nio.file.*;
@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SortFiles {
+public class FilesSorter {
 
     public static final String DEV = "dev";
     public static final String HOME = "home";
@@ -17,7 +17,7 @@ public class SortFiles {
     Path homePath;
     Path testPath;
 
-    public SortFiles() {
+    public FilesSorter() {
         this.devPath = Paths.get(DEV);
         this.homePath = Paths.get(HOME);
         this.testPath = Paths.get(TEST);
@@ -43,7 +43,7 @@ public class SortFiles {
 
     private List<String> getFilesPathsList() {
         try {
-            return Files.list(Paths.get(SortFiles.HOME))
+            return Files.list(Paths.get(FilesSorter.HOME))
                     .map(Path::toString)
                     .collect(Collectors.toList());
         } catch (IOException e) {
