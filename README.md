@@ -2,8 +2,11 @@
 This is a simple application for sorting files to appropriate folders according to internally hardcoded rules.
 
 ## Build app
-gradle clean build
-run app java -jar
+1. Build app with gradle: \
+`gradle clean build` 
+2. Build app is located in following location: \
+`optional invocation with path not supported yet. Application will work in current path folders` 
+3. run app `java -jar` - *optional invocation with path as a parameter not supported yet. Application will work in current path folders.*
 
 ## How it works?
 Each time app is launch, it copies all files from ./home to ./dev or ./test
