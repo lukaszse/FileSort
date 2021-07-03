@@ -1,17 +1,23 @@
 package com.seremak;
 
-import com.seremak.FilesSorter.FilesSorter;
+import com.seremak.fileWriter.FileWriter;
+import com.seremak.filesSorter.FilesSorter;
 import io.micronaut.configuration.picocli.PicocliRunner;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
+import javax.inject.Inject;
 import java.io.File;
 
 @Slf4j
 @Command(name = "FilesSort", description = "...",
         mixinStandardHelpOptions = true)
 public class FilesSortCommand implements Runnable {
+
+    @Inject
+    FileWriter fileWriter;
 
     @Option(names = {"-p", "--path"}, description = "Set path. Current Path is default")
     String path;
@@ -32,5 +38,7 @@ public class FilesSortCommand implements Runnable {
         FilesSorter filesSorter = new FilesSorter(path);
         filesSorter.createFolders();
         filesSorter.sortFiles();
+        fileWriter.writeReport(filesSorter.getMovedFilesCounter(), FilesSorter.HOME_FOLDER);
+        log.info("Sorting completed.");
     }
 }
