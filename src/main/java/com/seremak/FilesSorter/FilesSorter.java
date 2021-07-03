@@ -53,18 +53,18 @@ public class FilesSorter {
         return Collections.emptyList();
     }
 
-    private void copyToAppropriateFolder(final String fileName) {
-        File file = new File(fileName);
-        Path originalPath = Paths.get(fileName);
+    private void copyToAppropriateFolder(final String filePath) {
+        File file = new File(filePath);
+        Path originalPath = Paths.get(filePath);
         Date lastModified = new Date(file.lastModified());
 
         try {
-            if (fileName.contains(".xml")) {
-                copyFileUsingStream(file, prepareNewFile(DEV, fileName));
-            } else if( fileName.contains(".jar") && lastModified.getHours()%2 == 0) { // todo getHours is deprecated ad should be replaced by other solution
-                copyFileUsingStream(file, prepareNewFile(DEV, fileName));
-            } else if( fileName.contains(".jar") && lastModified.getHours()%2 != 0) { // todo getHours is deprecated ad should be replaced by other solution
-                copyFileUsingStream(file, prepareNewFile(TEST, fileName));
+            if (filePath.contains(".xml")) {
+                Files.move(originalPath, prepareNewPath(DEV, filePath), StandardCopyOption.REPLACE_EXISTING);
+            } else if(filePath.contains(".jar") && lastModified.getHours()%2 == 0) { // todo getHours is deprecated ad should be replaced by other solution
+                Files.move(originalPath, prepareNewPath(DEV, filePath), StandardCopyOption.REPLACE_EXISTING);
+            } else if(filePath.contains(".jar") && lastModified.getHours()%2 != 0) { // todo getHours is deprecated ad should be replaced by other solution
+                Files.move(originalPath, prepareNewPath(TEST, filePath), StandardCopyOption.REPLACE_EXISTING);
             }
         } catch (IOException e) {
             // todo error handling to be implemented
@@ -72,31 +72,8 @@ public class FilesSorter {
         }
     }
 
-    File prepareNewFile(final String path, final String fileName) {
-        String sameFileName = Paths.get(fileName).getFileName().toString();
-        return new File( path + "/" + sameFileName);
-    }
-
-    // todo rewrite this method in better way
-    private static void copyFileUsingStream(File source, File dest) throws IOException {
-        InputStream is = null;
-        OutputStream os = null;
-        try {
-            is = new FileInputStream(source);
-            os = new FileOutputStream(dest);
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = is.read(buffer)) > 0) {
-                os.write(buffer, 0, length);
-            }
-        } finally {
-            assert is != null;
-            is.close();
-            assert os != null;
-            os.close();
-        }
-        if(source.delete()) {
-            System.out.println("File " + source.toString() + "was copied to folder " + dest.toString());
-        }
+    Path prepareNewPath(final String path, final String filePath) {
+        String fileName = Paths.get(filePath).getFileName().toString();
+        return Paths.get(path, fileName);
     }
 }
