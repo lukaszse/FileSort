@@ -1,5 +1,7 @@
 package com.seremak.FilesSorter;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.*;
 import java.nio.file.*;
 import java.util.Collections;
@@ -7,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class FilesSorter {
 
 
@@ -32,7 +35,7 @@ public class FilesSorter {
             Files.createDirectory(homePath);
             Files.createDirectory(testPath);
         } catch (IOException e) {
-            System.out.println("Some errors occurred. Not all folders was created. Check if folders already exist");
+            log.warn("Some errors occurred. Not all folders was created. Check if folders already exist");
             // todo error handling could be added here. Also More advance logging could be implemented i.a. Logback [ log.error("Description. Cause {}), e.message())) ]
             return;
         }
@@ -50,7 +53,7 @@ public class FilesSorter {
                     .map(Path::toString)
                     .collect(Collectors.toList());
         } catch (IOException e) {
-            System.out.println("Error while getting files paths occurred. Error: " + e.getMessage());
+            log.error("Error while getting files paths occurred. Error: " + e.getMessage());
             // todo error handling could be added here. Also More advance logging could be implemented i.a. Logback [ log.error("Description. Cause {}, StackTrace), e.message(), e.printStackTrace)) ]
         }
         return Collections.emptyList();
