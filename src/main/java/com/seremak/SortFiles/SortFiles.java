@@ -29,7 +29,7 @@ public class SortFiles {
             Files.createDirectory(homePath);
             Files.createDirectory(testPath);
         } catch (IOException e) {
-            System.out.println("Some errors occurred. Folders not all was created. Check if folders already exist");
+            System.out.println("Some errors occurred. Not all folders was created. Check if folders already exist");
             // todo error handling could be added here. Also More advance logging could be implemented i.a. Logback [ log.error("Description. Cause {}), e.message())) ]
             return;
         }
@@ -77,10 +77,10 @@ public class SortFiles {
         return new File( path + "/" + sameFileName);
     }
 
+    // todo rewrite this method in better way
     private static void copyFileUsingStream(File source, File dest) throws IOException {
         InputStream is = null;
         OutputStream os = null;
-
         try {
             is = new FileInputStream(source);
             os = new FileOutputStream(dest);
@@ -90,8 +90,13 @@ public class SortFiles {
                 os.write(buffer, 0, length);
             }
         } finally {
+            assert is != null;
             is.close();
+            assert os != null;
             os.close();
+        }
+        if(source.delete()) {
+            System.out.println("File " + source.toString() + "was copied to folder " + dest.toString());
         }
     }
 }
