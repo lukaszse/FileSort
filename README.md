@@ -11,7 +11,7 @@ app can e invoked optionally with paameter `path`, example: \
    `java -jar FilesSort-0.1-all.jar -p {your chosen path}`
 
 ## How it works?
-Each time app is launch, it copies all files from ./home to ./dev or ./test
+Each time app is launch, it copies all files from ./home to ./dev or ./test \
 Criteria:
 + ./dev - `*.xml` and `*.jar` with even hour
 + ./test - `*.jar` with even odd
