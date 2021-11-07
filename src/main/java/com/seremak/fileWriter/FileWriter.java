@@ -64,8 +64,8 @@ public class FileWriter {
             log.info("Error occurred while fetching the list of files. Path: {}", path);
         }
         List<String> countReportsList = fileList.stream()
-                .filter(fileName -> fileName.contains("count"))
-                .filter(fileName -> fileName.contains(".txt"))
+                .filter(fileName -> fileName.matches("^count_\\d+_\\d+\\.txt"))/*contains("count"))*/
+//                .filter(fileName -> fileName.contains(".txt"))
                 .filter(fileName -> !fileName.contains("summary"))  // todo simplify to regex
                 .collect(Collectors.toList());
 
